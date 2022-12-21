@@ -72,48 +72,48 @@
 <p>1부터 10까지의 약수의 개수는 순서대로 [1, 2, 2, 3, 2, 4, 2, 4, 3, 4]개입니다. 공격력의 제한수치가 3이기 때문에, 6, 8, 10번 기사는 공격력이 2인 무기를 구매합니다. 따라서 해당 수들의 합인 21을 return 합니다.</p>
 
 <hr>
+
 ### 어떤 수의 약수 개수 구하기
 
-1. 기초적인 반복문 사용 방법
+**1. 기초적인 반복문 사용**
 
-def solution(n):
-    cnt = 0
-    for i in range(1, n+1):
-        if n % i == 0:
-               cnt += 1 
+	def solution(n):
+	    cnt = 0
+	    for i in range(1, n+1):
+		if n % i == 0:
+		       cnt += 1 
 
-    return cnt
-
-
-2. n/2 원리 사용'
-
-def solution(n):
-    factor_array = []
-    for i in range(1, n/2+1):
-        if n % i == 0:
-               cnt += 1 
-
-    return cnt
-
-어떤 수 n의 절반 (n/2) 이상 에서는 n의 약수가 존재하지 않기 때문에 알고리즘 개선 가능
+	    return cnt
 
 
-3. 제곱근 사용
+**2. n/2 원리 사용**
 
-def solution(n):
-    factor_array = []
-    for i in range(1, int(n**(1/2))+1):
-        if n % i == 0:
-              //제곱근일 때
-              if i == n//i:
-                cnt += 1
-              //제곱근이 아닐 때
-              else:
-                cnt += 2
+	def solution(n):
+	    factor_array = []
+	    for i in range(1, n/2+1):
+		if n % i == 0:
+		       cnt += 1 
 
-    return cnt
+	   return cnt
+	   
+> 어떤 수 n의 절반 (n/2) 이상 에서는 n의 약수가 존재하지 않기 때문에 알고리즘 개선 가능
+
+
+**3. 제곱근 사용**
+				
+	def solution(n):
+	    factor_array = []
+	    for i in range(1, int(n**(1/2))+1):
+		if n % i == 0:
+		      //제곱근일 때
+		      if i == n//i:
+			cnt += 1
+		      //제곱근이 아닐 때
+		      else:
+			cnt += 2
+	    return cnt
  
-for문을 어떤 수 n의 제곱근까지만 반복한다. 해당 수의 제곱근 이상 반복하는 것은 의미가 없다.
+> for문을 어떤 수 n의 제곱근까지만 반복한다. 해당 수의 제곱근 이상 반복하는 것은 의미가 없다.
 
 
 <hr>
