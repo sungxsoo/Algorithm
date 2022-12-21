@@ -1,10 +1,10 @@
 # [unrated] 과일 장수 - 135808 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/135808#) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/135808) 
 
 ### 성능 요약
 
-메모리: 10.1 MB, 시간: 0.01 ms
+메모리: 10.2 MB, 시간: 0.01 ms
 
 ### 구분
 
@@ -111,6 +111,57 @@
 </tbody>
       </table>
 <p>따라서 (1 x 3 x 1) + (2 x 3 x 1) + (4 x 3 x 2) = 33을 return합니다.</p>
+
+
+<hr>
+
+### 내 풀이
+
+        def solution(k, m, score):
+            num_box = int(len(score)/m)
+            answer = 0
+
+            score.sort(reverse = True)
+
+            for i in range(0,num_box):
+                answer = answer + score[i*m+(m-1)]*m      
+
+
+            return answer
+
+
+### 다른 풀이 
+
+        def solution(k, m, score):
+            return sum(sorted(score)[len(score)%m::m])*m
+            
+
+## sorted(),sum() 내장함수
+
+        내장 함수는 파이썬에서 순회가 가능한(iterable) 객체를 인자로 받아 데이터를 정렬해줄 수 있다 
+
+        sorted(): Iterable인 list, tuple, dictionary의 정렬된 값을 리스트 형태로 리턴하는 함수 (reverse 시에는 sorted(score, reverse=False) )
+              
+        sum():  Iterable인 list, tuple, dictionary의 합을 리턴하는 함수
+
+## list slicing (step)
+
+        list[시작:끝] 
+
+        list [시작값:끝값:step] (slice한 값의 범위에서 step 값을 주어 그 값만큼 건너뛰어 가져오는 기능)
+
+** 시작은 포함 되지만 끝 값은 포함되지 않는다.
+
+
+짬차이가 느껴지는 코드 갭이다..
+
+python 문법이 익숙치 않다 보니 간결한 표현을 길게 쓰고 있음을 느낀다.
+
+box의 개수를 구하는 별도의 작업 없이 해당 변수가 쓰이는 용도인 list 순회 시 index 계산에 바로 나머지 연산을 통해
+구했다. 
+
+<hr>
+
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://programmers.co.kr/learn/challenges
